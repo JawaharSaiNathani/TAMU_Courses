@@ -1,0 +1,239 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: #1}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. The solutions given in this
+  homework are my own work.\\[1ex]
+ \textbf{Signature:} \underline{Jawahar Sai Nathani}{\hspace*{5cm}} }
+
+ \newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactitem}[$\Box$] 
+\item [$\checkmark$] Did you add your name? 
+\item [$\checkmark$] Did you disclose all resources that you have used? \\
+(This includes all people, books, websites, etc. that you have consulted)
+\item [$\checkmark$] Did you sign that you followed the Aggie honor code? 
+\item [$\checkmark$] Did you solve all problems? 
+\item [$\checkmark$] Did you submit the pdf file of your homework?
+\end{compactitem}
+}
+
+
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set
+      #1}\end{center}}
+\newcommand{\duedate}[2]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of the pdf file of this homework is due on
+    \textbf{#1} on canvas. \end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+
+\begin{document}
+
+\problemset{4}
+\duedate{2/16/2024 before 11.59pm}{}
+\name{Jawahar Sai Nathani}
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+\end{resources}
+\honor
+
+\newpage
+Make sure that you describe all solutions in your own words. Typeset
+your solutions in \LaTeX. Read
+chapter 30 on ``Polynomials and the FFT'' and chapter 14 on ``Dynamic
+Programming'' in our textbook. 
+
+\begin{problem} (20 points) Let $\omega$ be a primitive $n$th root of unity. 
+The fast Fourier transform implements the multiplication with
+  the matrix 
+$$ F = (\omega^{ij})_{i,j\in [0..n-1]}.$$
+Show that the inverse of the matrix $F$ is given by 
+$$ F^{-1} = \frac{1}{n}  (\omega^{-jk})_{j,k\in [0..n-1]}$$
+[Hint: $x^n-1= (x-1)(x^{n-1}+\cdots + x + 1),$ so any power
+$\omega^\ell\neq 1$  must be a root of $x^{n-1}+\cdots + x + 1$.  ]  
+Thus, the inverse FFT, called IFFT, is nothing but the FFT using
+$\omega^{-1}$ instead of $\omega$, and multiplying the result with
+$1/n$. 
+\end{problem}
+\begin{solution}
+Let assume $F = (\omega^{ik})_{i,k\in[0..n-1]}$ and 
+$F^{-1} = \frac{1}{n}  (\omega^{-kj})_{j,k\in [0..n-1]}$ where w is nth root of unity.\\
+According to the fundamental property of matrix multiplication and inverses $F.F^{-1} = I$
+\begin{flalign*}
+(F.F^{-1})_{ij}  &= \frac{1}{n} \sum_{k=0}^{n-1}\omega^{ik}.\omega^{-kj}    &\\
+            &=  \frac{1}{n} \sum_{k=0}^{n-1}\omega^{(i-j)k} &\\
+            &  \text{\underline{If $i = j$} } &\\
+(F.F^{-1})_{ij}  &= \frac{1}{n} \sum_{k=0}^{n-1}\omega^{0 * k} \hspace{2mm} = \hspace{2mm} \frac{1}{n} \sum_{k=0}^{n-1}1 \hspace{2mm} = \hspace{3mm} \frac{1}{n} (n) \hspace{2mm} = \hspace{2mm} 1&\\
+            &  \text{\underline{If $i \neq j$}, Let $i - j = p$}&\\
+(F.F^{-1})_{ij}  &= \frac{1}{n} \sum_{k=0}^{n-1}\omega^{pk} &\\
+            &= \frac{1}{n} (1 + \omega^p + \omega^{2.p} + \omega^{3.p} + \cdots + \omega^{(n-1).p})&\\
+\end{flalign*}
+$(\omega^p - 1)(1 + \omega^p + \omega^{2.p} + \omega^{3.p} + \cdots + \omega^{(n-1).p}) = \omega^{np} - 1 = (\omega^n)^p - 1 = 1^p - 1 = 0$\\
+As $p = i - j$ and $i \neq j$, p can never be a multiple of n. Hence $\omega^p - 1 \neq 0$ for any p. This implies $1 + \omega^p + \omega^{2.p} + \omega^{3.p} + \cdots + \omega^{(n-1).p} = 0 \hspace{1mm} \forall \hspace{1mm} p$. \\
+Therefore,
+\[(F.F^{-1})_{ij}=\begin{cases}
+1 & \text{if $i=j$} \\
+0 & \text{if $i\neq j$}
+\end{cases}\] \\
+This is the definition of Identity matrix I. As $F.F^{-1} = I$, our assumption $F^{-1} = \frac{1}{n}  (\omega^{-jk})_{j,k\in [0..n-1]}$ is correct. Hence Proved.
+\end{solution}
+
+\begin{problem} (20 points) 
+Describe in your own words how to do a polynomial multiplication using the FFT and
+  IFFT for polynomials $A(x)$ and $B(x)$ of degree $\le n-1$. Make
+  sure that you describe the length of the FFT and IFFT needed for
+  this task. Be concise and precise. Illustrate how to multiply the
+  polynomials $A(x) = x^2+2x+1$ and $B(x)=x^3+2x^2+1$ using this
+  approach. 
+\end{problem}
+\begin{solution}
+Let's consider the polynomials $A(x) = x^2+2x+1$ and $B(x)=x^3+2x^2+1$
+\begin{itemize}
+    \item Extract the coefficients of both the polynomials. That would be (1, 2, 1) for $A(x)$ and (1, 2, 0, 1) for $B(x)$.
+    \item Degree of $A(x)$ is 2 and of $B(x)$ is 3. Degree of resulting polynomial after multiplying these 2 would be 2 + 3 = 5.
+    \item Length of FFT and IFFT will be d = $2^n$ where d $\geq$ degree of resulting polynomial. Value greater than 5 and in the form of $2^n$ is 8. So length of FFT and IFFT would be 8.
+    \item Add padding to coefficients of $A(x)$ and $B(x)$ to make the length as 8.
+    \item Implement FFT on coefficients and convert them into point-value representation.
+    \item Perform point vise multiplication on resulting points of each polynomial generated after FFT. The new points are point-value representation for $A(x).B(x)$.
+    \item Implement IFFT on new points to convert point-value representation into coefficient representation. The obtained values are the coefficients of $A(x).B(x)$.
+    \item Coefficients of $A(x).B(x)$ would be (1, 4, 5, 3, 2, 1). Time complexity of above polinomial multiplication would be $O(n\log{n})$.
+\end{itemize}
+Therefore, $A(x).B(x) = x^5 + 4x^4 + 5x^3 + 3x^2 + 2x + 1$.
+\end{solution}
+\newpage
+
+\begin{problem} (20 points) 
+How can you modify the polynomial multiplication algorithm based
+  on FFT and IFFT to do multiplication of long integers in base 10?
+  Make sure that you take care of carries in a proper way. Write your
+  algorithm in pseudocode and give a brief explanation. 
+\end{problem}
+\begin{solution}
+Let's consider 2 long integers in base 10 - 232 and 15. These numbers can be multiplied using FFT and IFFT as following.
+\begin{itemize}
+    \item Consider both the numbers as polynomials where x will be 10. $232 = 2*10^2 + 3*10^1 + 2$ and $15 = 1*10^1 + 5$.
+    \item Take the coefficients of both the polynomials - (2, 3, 2) and (1, 5).
+    \item Perform FFT and IFFT on these coefficients to get coefficients of the product $232 \times 15$.
+    \item Multiply each coefficient with respective power of 10 to obtain the final product of 2 integers.
+    \item Coefficients after FFT and IFFT would be (2, 13, 17, 10). Exact value of product $232\times 15$ is $2*10^3 + 13*10^2 + 17*10^1 + 10 = 3480$
+\end{itemize}
+\textbf{\underline{Psuedocode}}
+\begin{verbatim}
+def product(A, B) {
+    // Convert A and B into polynomials and extract coefficients
+    A_poly = conv_poly(A)
+    B_poly = conv_poly(B)
+
+    // Add zero padding according to length of FFT
+    A_pad = pad(A_poly)
+    B_pad = pad(B_poly)
+
+    // Apply FFT on A_pad and B_pad
+    A_fft = FFT(A_pad)
+    B_fft = FFT(B_pad)
+
+    // Multiplly A_fft and B_fft
+    C_fft = pointwise_prod(A_fft, B_fft)
+
+    // Apply IFFT
+    C = IFFT(C_fft)
+
+    // Calculate product
+    sum = 0
+    for (int i = 0; i < len(C); i++)
+        sum += C[len(C) - i - 1] * 10^i
+    return sum
+}
+\end{verbatim}
+\end{solution}
+\newpage
+
+\begin{problem}[20 points]
+  As stated, in dynamic programming we first solve the subproblems and
+  then choose which of them to use in an optimal solution to the
+  problem. Professor Capulet claims that we do not always need to
+  solve all the subproblems in order to find an optimal solution. She
+  suggests that we can find an optimal solution to the matrix-chain
+  multiplication problem by always choosing the matrix $A_k$ at which
+  to split the subproduct $A_iA_{i+1}\cdots A_j$ (by selecting $k$ to
+  minimize the quantity $p_{i-1}p_kp_j$) before solving the
+  subproblems. Find an instance of the matrix-chain multiplication
+  problem for which this greedy approach yields a suboptimal solution.
+\end{problem}
+\begin{solution}
+Let's consider 3 matrices $A_1$ of size $4\times7$, $A_2$ of size $7\times5$ and $A_3$ of size $5\times3$.
+\begin{itemize}
+    \item According to greedy algorithm $4 \times 5 \times 3$ gives the least value. Hence the matrices should be split between $A_2$ and $A_3$. No of scalar multiplications for this split $(A_1.A_2)A_3$ is 200.
+    \item If we spit the matrices between $A_1$ and $A_2$ then the no of scalar multiplications for $A_1(A_2.A_3)$ would be 189. This requires less scalar multiplication compared to the greedy approach.
+\end{itemize}
+Therefore, the above greedy approach doesn't always yield an optimal solution.
+\end{solution}
+\newpage
+
+\begin{problem}[20 points]
+  Determine an LCS of $X = \langle R,H,U,B,A,R,B\rangle$ and
+  $Y = \langle S,T,R,A,W,B,E,R,R,Y \rangle$ using the dynamic programming
+  algorithm that was discussed in class.  Make sure that you explain your
+  answer step-by-step, in detail, rather than just giving an LCS.
+  [Make sure that you list $X$ vertically, and $Y$ horizontally when
+  constructing the table. If $x_i\neq y_j$, and $c[i-1,j] = c[i,j-1]$,
+  choose $c[i-1,j]$. Explain row-by-row how the table is constructed.] 
+\end{problem}
+\begin{solution}
+Let $X=\langle R,H,U,B,A,R,B \rangle$\\
+Let $Y=\langle S,T,R,A,W,B,E,R,R,Y \rangle$\\
+Using the following algorithm, the length of the LCS between the two sequences can be determined.
+\begin{enumerate}
+    \item Initialize a table L with 0's of size $(m+1)\times(n+1)$, where $m$ and $n$ are the lengths of the sequences $X$ and $Y$, respectively.
+    \item Iterate through the sequences $X$ and $Y$, and for each pair of elements $(x,y)$ do the following:
+    \begin{enumerate}
+        \item If $x$ equals $y$, set $L[i][j]=L[i-1][j-1]+1$
+        \item If $x$ does not equal $y$, set $L[i][j]=\max(L[i-1][j], L[i][j-1])$
+    \end{enumerate}
+    \item The length of the LCS is given by $L[m][n]$.
+\end{enumerate}
+\[
+\begin{array}{c|ccccccccccc}
+\text{LCS} & \text{\textvisiblespace} & S & T & R & A & W & B & E & R & R & Y \\
+\hline
+\text{\textvisiblespace} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+R & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+H & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+U & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+B & 0 & 0 & 0 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 2\\
+A & 0 & 0 & 0 & 1 & 2 & 2 & 2 & 2 & 2 & 2 & 2\\
+R & 0 & 0 & 0 & 1 & 2 & 2 & 2 & 2 & 3 & 3 & 3\\
+B & 0 & 0 & 0 & 1 & 2 & 2 & 3 & 3 & 3 & 3 & 3\\
+\end{array}
+\]
+
+To find the actual LCS string, start in the bottom right corner of the above matrix and traverse backwards through the table following the path of the larger values until you reach the top or left edge of the table. \\
+The elements in the sequence that correspond to the table cells you visit during this backtracking process will form the LCS string.
+
+\noindent
+The traversal algorithm is as follows
+\begin{enumerate}
+    \item If the cell value directly to the left and directly above are the same as the current cell, go up and to the left by one.
+    \item If this condition fails, go directly up.
+\end{enumerate}
+LCS string for above X and Y is $\langle R,B,R \rangle$ or $\langle R,A,R \rangle$.
+\end{solution}
+
+
+
+
+\goodbreak
+\checklist
+\end{document}

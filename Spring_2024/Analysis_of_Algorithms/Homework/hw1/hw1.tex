@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist,enumitem}
+
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: #1}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. The work shown here is entirely
+  my own, and is written in my own words.\\[1ex]
+ \textbf{Signature:} \underline{Jawahar Sai Nathani}{\hspace*{5cm}} }
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactitem}[$\Box$] 
+\item[$\checkmark$] Did you add your name? 
+\item[$\checkmark$] Did you disclose all resources that you have used? \\
+(This includes all people, books, websites, etc. that you have consulted)
+\item[$\checkmark$] Did you follow the Aggie honor code? 
+\item[$\checkmark$] Did you solve all problems? 
+\item[$\checkmark$] Did you submit the pdf file (resulting from your latex file)
+  of your homework?
+\end{compactitem}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due date:} Electronic
+    submission the .pdf file of this homework is due on \textbf{#1} on canvas
+    (as a turnitin assignment).\end{quote}}
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+\begin{document}
+\problemset{1}
+\centerline{CSCE 411/629 (Dr. Klappenecker) }
+
+\duedate{Friday, 1/26, 11:59pm}
+\name{ Jawahar Sai Nathani}
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+\end{resources}
+\honor
+
+\newpage%
+\noindent Get familiar with \LaTeX. All exercises in this homework are from the lecture
+notes on perusall, not from our textbook. \medskip
+
+\noindent\textbf{Reading assignment:} Carefully read the lecture notes
+\verb|dm_ch11.pdf| on Perusall. Skim Appendices A and B in the textbook. 
+
+\begin{problem}
+Exercise 11.3 (in notes on perusall) \\
+Ernie and Bert study the functions $f(n) = n^2 + 2n$ and $g(n) = n^2$. Ernie claims that the functions are asymptotically equal, so $f \sim g$. Bert insists that f can never be asymptotically equal to g, since they always differ quite significantly, namely $f(n) - g(n) \geq 2n$ for all $n \geq 1$. Explain why one is right and why the other is wrong.
+\begin{solution}
+ According to Asymptotic Equality definition, we write $f \sim g$ and say that $f$ is \textbf{asymptotically equal} to $g$ if 
+\[ \lim_{n \to \infty} \frac{f(n)}{g(n)} = 1\]
+We have $f(n) = n^2 + 2n$ and $g(n) = n^2$
+\[ \lim_{n \to \infty} \frac{f(n)}{g(n)} = \lim_{n \to \infty} \frac{n^2 + 2n}{n^2} = 1 + \lim_{n \to \infty} \frac{2}{n} \]
+As $n \to \infty$, $\frac{2}{n} \to 0$, Therefore
+\[ \lim_{n \to \infty} \frac{f(n)}{g(n)} = 1 + 0 = 1 \]
+Which satisfies the above definition. Hence $f$ and $g$ are \textbf{asymptotically equal}. Ernie's claim is correct.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Exercise 11.9 (in notes on perusall) \\
+Find all accumulation points of the following functions, and determine their upper and lower accumulation points.
+\begin{enumerate}[label=(\alph*)]
+\item $f(n) = (-1)^n$,
+\item $f(n) = 4 + (-1)^n/(n+10)$,
+\item $f(n) = ((-1)^n+(-1)^{\lfloor{n/2}\rfloor})(1 + 1/n)$.
+\end{enumerate}
+\begin{solution}
+\begin{enumerate}[label=(\Alph*)]
+\item Given $f(n) = (-1)^n$ , which can be written as 
+\begin{equation}
+  f(n)=\begin{cases}
+    1 & \text{if $n$ is even}.\\
+    -1 & \text{if $n$ is odd}.
+  \end{cases}
+\end{equation}
+\begin{itemize}
+  \item For any $\epsilon > 0$, for all even positive integers n $f(n) = 1$. As the function has an infinite number of function values satisfying $$|f(n) - 1| = |1-1| = 0 < \epsilon$$ Hence, a = 1 is an accumulation point.
+  \item For any $\epsilon > 0$, for all odd positive integers n $f(n) = -1$. As the function has an infinite number of function values satisfying $$|f(n) - (-1)| = |-1-(-1)| = 0 < \epsilon$$ Hence, a = -1 is an accumulation point.
+  \item For any $\epsilon > 0$, for all even positive integers n we have infinitely many function values satisfying $f(n) > 1 - \epsilon$. We have $f(n) > 1 + \epsilon$ for zero function values. Hence, 1 is an upper accumulation point.
+  \item For any $\epsilon > 0$, for all odd positive integers n we have infinitely many function values satisfying $f(n) < -1 + \epsilon$. We have $f(n) < -1 - \epsilon$ for zero function values. Hence, -1 is a lower accumulation point.
+\end{itemize}
+Therefore, \textbf{1, -1 are accumulation points} of function $f(n)$ with \textbf{1 as upper accumulation point} and \textbf{-1 as lower accumulation point.}
+
+\item Given $f(n) = 4 + (-1)^nn/(n+10)$, which can be written as
+\begin{equation}
+  f(n)=\begin{cases}
+    4 + n/(n+10) & \text{if $n$ is even}.\\
+    4 - n/(n+10) & \text{if $n$ is odd}.
+  \end{cases}
+\end{equation}
+Similar to the above solution (a), as $\lim_{n\to\infty}n/(n+10) = 1$ this function has 4+1 = 5 and 4-1 = 3 as accumulation points.
+\begin{itemize}
+    \item For any $\epsilon > 0$, for all even positive integers $n > 10(1/\epsilon - 1)$ we have infinitely many function values satisfying $f(n) > 5 - \epsilon$. We have $f(n) > 5 + \epsilon$ for no function value. Hence, 5 is an upper accumulation point.
+    \item For any $\epsilon > 0$, for all odd positive integers $n > 10(1/\epsilon - 1)$ we have infinitely many function values satisfying $f(n) < 3 + \epsilon$. We have $f(n) < 3 - \epsilon$ for no function value. Hence, 3 is a lower accumulation point.
+\end{itemize}
+Therefore, \textbf{5, 3 are accumulation points} of function $f(n)$ with \textbf{5 as upper accumulation point} and \textbf{3 as lower accumulation point.}
+
+\item Given $f(n) = ((-1)^n+(-1)^{\lfloor{n/2}\rfloor})(1 + 1/n)$, which can be written as
+\begin{equation}
+  f(n)=\begin{cases}
+    -2 - 2/n & \text{if $n = 4K - 1$ and $K \in I$}.\\
+    2 + 2/n & \text{if $n = 4K$ and $K \in I$}.\\
+    0 & \text{if $n = 4K + 1$ and $K \in I$}.\\
+    0 & \text{if $n = 4K + 2$ and $K \in I$}.\\
+  \end{cases}
+\end{equation}
+Similar to the above solution (a), as $\lim_{n\to\infty}1/n = 0$ this function has -2-0 = -2, 2+0 = 2 and 0 as accumulation points. \\
+Therefore, \textbf{2, 0 and -2 are accumulation points} of function $f(n)$ with \textbf{2 as upper accumulation point} and \textbf{-2 as lower accumulation point.}
+\end{enumerate}
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Exercise 11.17 (in notes on perusall)\\
+Let b and d be positive real numbers that are not equal to 1.
+\begin{enumerate}[label=(\alph*)]
+\item Show that $\Theta(\log_bn) = \Theta(\log_dn)$, so one can write $\Theta(\log{n})$ using a baseless logarithm without causing confusion.
+\item Prove or disprove: Does $\Theta({n^{\log_bn}}) = \Theta({n^{\log_dn}})$ hold in general?
+\end{enumerate}
+\begin{solution}
+\begin{enumerate}[label=(\Alph*)]
+\item We need to prove $\Theta(\log_bn) = \Theta(\log_dn)$. Let $f(n) = \log_bn$ and $g(n) = \log_dn$
+$$\lim_{n\to\infty}\frac{\lvert f(n) \rvert}{\lvert g(n) \rvert} = \lim_{n\to\infty}\frac{\log_b n}{\log_d n} = \lim_{n\to\infty}\frac{(\frac{\log n}{\log b})}{(\frac{\log n}{\log d})} = \lim_{n\to\infty}\frac{\log d}{\log b} = \frac{\log d}{\log b}$$
+Therefore, $f(n) = \Theta(g(n))$ and $g(n) = \Theta(f(n)) \Longrightarrow \Theta(\log_bn) = \Theta(\log_dn)$. Hence Proved. 
+
+\item We need to prove $\Theta({n^{\log_bn}}) = \Theta({n^{\log_dn}})$. If we take limit as n $\to\infty$ $\lvert{f(n)}\rvert/\lvert{g(n)}\rvert$
+$$\lim_{n\to\infty}\frac{\lvert f(n) \rvert}{\lvert g(n) \rvert} = \lim_{n\to\infty}\frac{n^{\log_bn}}{n^{\log_dn}}$$
+The above limit exists only if b = d and the limit is undefined for all other values of b and d. Therefore, $\Theta(\log_bn) = \Theta(\log_dn)$ doesn't hold in general.
+\end{enumerate}
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Exercise 11.19 (in notes on perusall) \\
+Show that for all positive integers k, we have
+$$1^k + 2^k + \cdots + n^k = \Theta(n^{k+1})$$
+\begin{solution}
+Need to prove $1^k + 2^k + \cdots + n^k = \Theta(n^{k+1})$ \\
+Let $f(n) = 1^k + 2^k + \cdots + n^k$ and $g(n) = n^{k+1}$
+$$\lim_{n\to\infty}\frac{\lvert f(n) \rvert}{\lvert g(n) \rvert} = \lim_{n\to\infty}\frac{1^k + 2^k + \cdots + n^k}{n^{k+1}} = \lim_{n\to\infty}\frac{1}{n}((1/n)^k + (2/n)^k + \cdots + (n/n)^k)$$
+$$= \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n} (\frac{r}{n})^k = \int_{0}^{1} x^k \,dx = \frac{1}{k+1}$$
+As K is a positive integer and $\lim_{n\to\infty}{\lvert f(n) \rvert}/{\lvert g(n) \rvert}$ exists. \\ Therefore, $1^k + 2^k + \cdots + n^k = \Theta(n^{k+1})$
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Exercise 11.35 (in notes on perusall) \\
+Show that $f \in O(g)$ and $f \notin o(g)$ does not imply that $f \in \Theta(g)$.
+\begin{solution}
+Given $f \in O(g)$ and $f \notin o(g)$. Let us take an example that satisfies these 2 conditions.
+$$g(n) = 1 \hspace{3mm} and \hspace{3mm} f(n) = 1 + (-1)^n$$
+\begin{equation}
+  f(n)=\begin{cases}
+    2 & \text{if n is even}.\\
+    0 & \text{if n is odd}\\
+  \end{cases}
+\end{equation}
+\begin{itemize}
+\item There exists some positive constant C i.e 3 such that \\
+$\lvert f(n) \rvert \leq C \lvert g(n) \rvert$, $\forall n > n_0$. This satisfies $f \in O(g)$
+\item There exists no $n_0$, where for every $\epsilon > 0$ the inequality \\
+$\lvert f(n) \rvert \leq \epsilon \lvert g(n) \rvert$, $\forall n > n_0$ holds. i.e For $\epsilon = 1$, $n = 2$ inequality doesn't hold as $2 \nleqslant 1$. This satisfies $f \notin o(g)$.
+\item There exists no positive constant c such that $c\lvert g(n) \rvert \leq \lvert f(n) \rvert$, $\forall n > n_0$. Because $c \nleqslant 0$, which doesn't satisfy the basic rule of $f = \Theta{(g)}$.
+\end{itemize}
+Therefore, $f \in O(g)$ and $f \notin o(g)$ does not imply $f = \Theta{(g)}$. Hence Proved.
+\end{solution}
+\end{problem}
+
+\noindent\rule{12.2cm}{0.4pt} \\
+
+Homeworks must be typeset in \LaTeX{}. The solution must be written in
+your own words. 
+
+
+
+
+
+
+
+
+
+\goodbreak
+\checklist
+\end{document}

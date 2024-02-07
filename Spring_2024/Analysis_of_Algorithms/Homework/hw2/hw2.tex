@@ -1,0 +1,258 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist,qtree,algpseudocode}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: {#1}}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. \\[1ex]
+ \textbf{Signature:} \underline{Jawahar Sai Nathani}{\hspace*{5cm}} }
+
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactitem}[$\Box$] 
+\item [$\checkmark$] Did you add your name? 
+\item [$\checkmark$] Did you disclose all resources that you have used? \\
+(This includes all people, books, websites, etc. that you have consulted)
+\item [$\checkmark$] Did you sign that you followed the Aggie honor code? 
+\item [$\checkmark$] Did you solve all problems? 
+\item [$\checkmark$] Did you write the solution in your own words? 
+\item [$\checkmark$] Did you submit the pdf file of your homework?
+\end{compactitem}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[1]{\begin{quote}\textbf{Due dates:} Typeset your
+    solution in \LaTeX{}. Electronic
+    submission of the resulting .pdf file of this homework is due on
+    \textbf{#1} on canvas. If your submission cannot be checked by
+    turnitin, then it will not be graded.\end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\tikzset{face/.style={scale=0.5,shape=circle,minimum size=4ex,shading=radial,outer sep=0pt,
+        inner color=white!50!yellow,outer color= yellow!70!orange}}
+
+\newcommand{\aha}{%
+\begin{tikzpicture}[scale=0.5]
+     \node[face] {}; 
+     \draw[fill=white] (-1ex,0ex) ..controls (-0.5ex,0.2ex)and(0.5ex,0.2ex)..
+        (1ex,0.0ex) ..controls ( 1.5ex,1.5ex)and( 0.2ex,1.7ex)..
+        (0ex,0.4ex) ..controls (-0.2ex,1.7ex)and(-1.5ex,1.5ex)..
+        (-1ex,0ex)--cycle;
+    \fill[shift={(0.5ex,0.5ex)},rotate=80] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \fill[shift={(-0.5ex,0.5ex)},rotate=100] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \draw[] (-1.5ex,-0.5ex)
+               ..controls (-0.7ex,-1.7ex)and(0.7ex,-1.7ex)..(1.5ex,-0.5ex);
+\end{tikzpicture}
+}
+
+\newcommand{\confused}{%     
+\begin{tikzpicture}[scale=0.5]
+  \node[face] {}; 
+\draw[fill=white] (-1ex,0ex) ..controls (-0.5ex,0.2ex)and(0.5ex,0.2ex)..
+        (1ex,0.0ex) ..controls ( 1.5ex,1.5ex)and( 0.2ex,1.7ex)..
+        (0ex,0.4ex) ..controls (-0.2ex,1.7ex)and(-1.5ex,1.5ex)..
+        (-1ex,0ex)--cycle;
+    \fill[shift={(0.5ex,0.5ex)},rotate=80] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \fill[shift={(-0.5ex,0.5ex)},rotate=100] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \draw[] (-1ex,-0.75ex)--(1ex,-1.25ex);
+\end{tikzpicture}
+}
+
+
+\begin{document}
+\problemset{2}
+\duedate{Friday, Feb 2, before 11:59pm}
+\name{Jawahar Sai Nathani}
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+  \item https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/algpseudocodex/algpseudocodex.pdf
+  \item https://www.ling.upenn.edu/advice/latex/qtree/qtreenotes.pdf
+\end{resources}
+\honor
+
+\newpage
+
+\begin{problem}[20 points] 
+Give a self-contained proof of the fact that 
+$$\log_2(n!)\in \Theta(n\log n).$$
+[For part of your argument, you can use results that were given in the
+lecture, but you should write up the proof in your own words. Make
+sure that you write it in complete sentences, even when the sentence
+contains formulas. A good check is to read out the entire solution
+aloud. It should read smoothly.] 
+\end{problem}
+\begin{solution}
+Let $f(x) = \log_2(n!)$ and $g(x) = n\log{n}$ \\
+\underline{Step 1}
+$$n! = 1 * 2 * 3 * \cdots * (n-1) * n$$
+$$\Rightarrow n! \leq n * n * n * \cdots * n * n = n^n$$
+Apply \textbf{log} on both sides.
+$$\Rightarrow \log_2(n!) \leq \log_2(n^n) = \frac{n\log{n}}{\log{2}}$$
+As $f(x) \leq Cg(x) \hspace{2mm} \forall n > n_0$, where C = 1/$\log{2}$. Hence $f(x) = O(g(x))$ \\
+
+\underline{Step 2}
+$$n! = 1 * 2 * 3 * \cdots * (n-1) * n$$
+From the above expression ignore the first n/2 terms and all the terms after n/2 are greater than n/2. Hence above expression can be written as follows
+$$\Rightarrow n! \geq \frac{n}{2} * \frac{n}{2} * \frac{n}{2} \cdots * \frac{n}{2} \hspace{4mm} \longrightarrow \frac{n}{2} \hspace{2mm} terms$$
+$$\Rightarrow n! \geq (\frac{n}{2})^{\frac{n}{2}}$$
+Apply \textbf{log} on both sides
+$$\Rightarrow \log_2(n!) \geq \frac{n}{2}\log_2{\frac{n}{2}} = \frac{n}{2\log2}\log{\frac{n}{2}}$$
+Hence $f(x) = \Omega(g(x))$ for large values of n. \\
+Therefore, as $\log_2(n!) = O(n\log{n})$ and $\log_2(n!) = \Omega(n\log{n})$ it implies that $\log_2(n!) = \Theta(n\log{n})$
+\end{solution}  
+\newpage
+
+\begin{problem}[20 points] 
+  Amelia attempted to solve $n$ algorithmic problems. She wrote down
+  one problem per page in her journal and marked the page with
+  \confused when she was unable to solve the problem and with \aha
+  when she was able to solve it. So the pages of her journal look like
+  this: 
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}\confused&\confused&\confused&\aha&\confused&\aha&\confused&\aha\\
+\hline
+\end{array}
+$$
+Use the decision tree method to show that any algorithm to find a page with an
+\aha smiley on has to look at all $n$ pages in the worst case. 
+\end{problem}
+\begin{solution}
+In Decision tree method, at each node we check if the current page of the journal is marked with \aha. If the page is marked \aha we will end the algorithm and if the page is not marked \aha then we move forward. For Example
+
+\Tree [.{i = 0 (if(arr[i] == \aha))} \qroof{}.\aha True [.\confused {False (check i = 1)} \aha True [.\confused {False (and so on...)} ] ] ]
+
+The algorithm continues until a page with \aha is found. Therefore, the worst case for this algorithm is when there exists only one page with \aha symbol at the end of the array and all other pages have \confused symbol. In this case the algorithm checks all n pages in the array to find a page with \aha symbol. Hence, the worst case to find a page with \aha smiley on for any algorithm is to look at all n pages.
+\end{solution}  
+
+
+\begin{problem}[20 points] 
+  Amelia attempted to solve $n$ algorithmic problems. She wrote down
+  one problem per page in her journal and marked the page with
+  \confused when she was unable to solve the problem and with \aha
+  when she was able to solve it. So the pages of her journal look like
+  this: 
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}\confused&\confused&\confused&\aha&\confused&\aha&\confused&\aha\\
+\hline
+\end{array}
+$$
+Use an adversary method to show that any method to find a page with a
+\aha smiley on it might have to look at all $n$ pages. 
+\end{problem}
+\begin{solution}
+Let us consider an adversary method which manipulates the input data in such a way that, all the false cases (pages with \confused smiley) are provided first to the algorithm and true cases (pages with \aha smiley) later. This input data format generates the worst case or the longest run-time to find the result\\
+\textbf{Assumption -} There exists only one page with \aha smiley on and rest of the pages are marked with \confused smiley.
+\begin{itemize}
+    \item For the above input data, since all the pages with \confused smiley are tackled first, any algorithm should look at all n pages to find the page with \aha smiley marked on it.
+\end{itemize}
+\end{solution}  
+
+\begin{problem}[20 points] 
+  Amelia attempted to solve $n$ algorithmic problems, where $n$ is an
+  odd number. She wrote down one problem per page in her journal and
+  marked the page with \confused when she was unable to solve the
+  problem and with \aha when she was able to solve it. Suppose that we
+  want to find the pattern $\confused\aha$, where she was unable to
+  solve a problem, but was able to solve the subsequent problem. 
+
+  Find an algorithm that always looks at fewer than $n$ pages but is
+  able to correctly find the pattern when it exists. [Hint: First look
+  at all even pages.] 
+\end{problem}
+\begin{solution}
+To find the pattern \confused\aha, let's iterate through all the even indexes of the array and check the adjacent elements to determine whether the pattern exists. Ideally if the smiley on page "i" is \aha we will check if page "i - 1" contains \confused smiley or if the smiley on page "i" is \confused we will check if page "i + 1" contains \aha smiley. \\
+\textbf{\underline{Sudo Code} -} \\
+Let us assume the indexes of the array start from 0.
+
+\begin{algorithmic}
+\State $i \leftarrow 1$
+\While{$i < length(arr)$}
+\If{$arr[i] == \aha \hspace{2mm} and \hspace{2mm} arr[i - 1] == \confused$}
+    \State \Return $i-1$
+\EndIf
+\If{$arr[i] == \confused \hspace{2mm} and \hspace{2mm} arr[i + 1] == \aha$}
+    \State \Return $i$
+\EndIf
+\State $i \leftarrow i + 2$
+\EndWhile
+\State \Return nil
+\end{algorithmic}
+
+The worst case for the above algorithm is when all the smileys in the array are \confused, in this case, the above algorithm looks at n - 1 pages to find a page with \aha smiley. Hence the algorithm always looks at fewer than n pages and finds the pattern if exists.
+\end{solution}  
+\newpage
+
+\begin{problem}[20 points]
+Suppose that we are given a sorted array $A[1..n]$ of $n$ numbers. Our
+goal is to determine whether or not the array $A$ contains
+duplicate elements. We will limit ourselves to algorithms that use only the spaceship
+operator \verb|<=>| for comparisons, where 
+\begin{verbatim}
+a <=> b :=
+  if a < b then return -1
+  if a = b then return  0
+  if a > b then return  1
+  if a and b are not comparable then return nil
+\end{verbatim}
+No other methods will be used to compare or inspect elements of the
+array. 
+\begin{enumerate}[(a)]
+\item Give an efficient (optimal) comparison-based algorithm that decides
+  whether $A[1..n]$ contains duplicates using the spaceship operator
+  for comparisons. 
+\item Use an adversarial argument to show that no algorithm can solve
+  the problem with fewer calls to the comparison operator \verb|<=>|
+  than the algorithm that you gave in (a). 
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\begin{enumerate}[(a)]
+\item The given array A is sorted and contains some random numbers. Hence if the array has duplicates they exist adjacent to each other, the optimal solution to find the duplicate would be \\
+\textbf{\underline{Sudo Code} -} \\
+Let us assume the indexes of the array start from 0.
+\begin{algorithmic}
+\State $i \leftarrow 1$
+\While{$i < length(A)$}
+\If{$A[i - 1] <=> A[i] == 0$}
+    \State \Return duplicate exits at $i - 1$
+\EndIf
+\State $i \leftarrow i + 1$
+\EndWhile
+\State \Return duplicate doesn't exist
+\end{algorithmic}
+
+\item As the array is sorted, the adversarial argument is having the input data with duplicates present at "n - 2" and "n - 1" indexes of the array (last 2 elements) or an array without duplicates. For Example 
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}10&13&15&17&20&23&24&24\\
+\hline
+\end{array}
+$$
+To find if the duplicate exists, every number should be compared with its adjacent number and as the duplicates are present at the last 2 locations of the array, the algorithm has to make n - 1 comparisons to find the duplicates. Therefore, the worst-case run-time for the above algorithm is - "n - 1".
+\end{enumerate}
+\end{solution}
+
+\medskip
+\goodbreak
+\checklist
+\end{document}
