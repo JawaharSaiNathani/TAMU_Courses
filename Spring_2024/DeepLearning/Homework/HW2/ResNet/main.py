@@ -1,6 +1,7 @@
 from ImageUtils import parse_record
 from DataReader import load_data, train_vaild_split
 from Model import Cifar
+import torch
 
 import os
 import argparse
@@ -31,8 +32,10 @@ def main(config):
     x_train, y_train, x_test, y_test = load_data(data_dir)
     x_train_new, y_train_new, x_valid, y_valid = train_vaild_split(x_train, y_train)
 
-    # model = Cifar(config).cuda()
-    model = Cifar(config)
+    if torch.cuda.is_available():
+        model = Cifar(config).cuda()
+    else:
+        model = Cifar(config)
 
     ### YOUR CODE HERE
     # First step: use the train_new set and the valid set to choose hyperparameters.

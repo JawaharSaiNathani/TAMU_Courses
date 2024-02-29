@@ -22,6 +22,10 @@ class Cifar(nn.Module):
             self.config.first_num_filters,
         )
         ### YOUR CODE HERE
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Using {self.device} device")
+        self.network.to(self.device)
+
         # define cross entropy loss and optimizer
         self.loss_fn = nn.CrossEntropyLoss()
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=0.1, weight_decay=self.config.weight_decay)
@@ -56,9 +60,9 @@ class Cifar(nn.Module):
                 X_batch = curr_x_train[i*self.config.batch_size:min((i+1)*self.config.batch_size,curr_x_train.shape[0])]
                 y_batch = curr_y_train[i*self.config.batch_size:min((i+1)*self.config.batch_size,curr_y_train.shape[0])]
                 X_batch = np.array(list(map(lambda x: parse_record(x,True),X_batch)))
-                X_batch = torch.tensor(X_batch, dtype=torch.float)
+                X_batch = torch.tensor(X_batch,device=self.device, dtype=torch.float)
                 pred = self.network.forward(X_batch)
-                y_batch = torch.tensor(y_batch)
+                y_batch = torch.tensor(y_batch,device=self.device)
                 loss = self.loss_fn(pred,y_batch)
                 
                 ### YOUR CODE HERE
