@@ -21,6 +21,10 @@ class Cifar(nn.Module):
             self.config.num_classes,
             self.config.first_num_filters,
         )
+
+        # for name, layer in self.network.named_children():
+        #     print(name, layer)
+
         ### YOUR CODE HERE
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         print(f"Using {self.device} device")
@@ -28,7 +32,7 @@ class Cifar(nn.Module):
 
         # define cross entropy loss and optimizer
         self.loss_fn = nn.CrossEntropyLoss()
-        self.optimizer = torch.optim.Adam(self.network.parameters(), lr=0.1, weight_decay=self.config.weight_decay)
+        self.optimizer = torch.optim.SGD(self.network.parameters(), lr=0.1, weight_decay=self.config.weight_decay)
         ### YOUR CODE HERE
     
     def train(self, x_train, y_train, max_epoch):

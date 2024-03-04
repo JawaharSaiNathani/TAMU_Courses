@@ -9,7 +9,7 @@ import argparse
 def configure():
     parser = argparse.ArgumentParser()
     ### YOUR CODE HERE
-    parser.add_argument("--resnet_version", type=int, default=1, help="the version of ResNet")
+    parser.add_argument("--resnet_version", type=int, default=2, help="the version of ResNet")
     parser.add_argument("--resnet_size", type=int, default=18, 
                         help='n: the size of ResNet-(6n+2) v1 or ResNet-(9n+2) v2')
     parser.add_argument("--batch_size", type=int, default=128, help='training batch size')

@@ -182,14 +182,14 @@ class bottleneck_block(nn.Module):
         if projection_shortcut is not None:
             self.projection = nn.Sequential(
                 batch_norm_relu_layer(num_features=first_num_filters),
-                nn.Conv2d(first_num_filters, filters, (3, 3), strides, 0)
+                nn.Conv2d(first_num_filters, filters, projection_shortcut, strides, 0)
             )
         ### YOUR CODE HERE
         self.bn1 = batch_norm_relu_layer(num_features=first_num_filters)
         self.bn2 = batch_norm_relu_layer(num_features=filters//4)
-        self.layer1 = nn.Conv2d(first_num_filters, filters//4, (3,3), strides, 0 if strides > 1 else 'same')
+        self.layer1 = nn.Conv2d(first_num_filters, filters//4, (1,1), strides, 0 if strides > 1 else 'same')
         self.layer2 = nn.Conv2d(filters//4, filters//4, (3,3), 1, 'same')
-        self.layer3 = nn.Conv2d(filters//4, filters, (3,3), 1, 'same')
+        self.layer3 = nn.Conv2d(filters//4, filters, (1,1), 1, 'same')
     
     def forward(self, inputs: Tensor) -> Tensor:
         ### YOUR CODE HERE
@@ -230,10 +230,13 @@ class stack_layer(nn.Module):
         projection_shortcut = None
         if strides > 1 or block_fn is bottleneck_block:
             projection_shortcut = (1,1)
-            first_num_filters = filters//2
-        self.stack.append(block_fn(filters, projection_shortcut, strides, first_num_filters))
+        if strides > 1:
+            first_num_filters = filters_out//2
+        else:
+            first_num_filters = filters
+        self.stack.append(block_fn(filters_out, projection_shortcut, strides, first_num_filters))
         for _ in range(1, resnet_size):
-            self.stack.append(block_fn(filters, None, 1, filters))
+            self.stack.append(block_fn(filters_out, None, 1, filters_out))
         ### END CODE HERE
     
     def forward(self, inputs: Tensor) -> Tensor:
@@ -269,8 +272,8 @@ class output_layer(nn.Module):
     def forward(self, inputs: Tensor) -> Tensor:
         ### END CODE HERE
         outputs = inputs
-        if hasattr(self, 'bn_relu'):
-            outputs = self.bn_relu(outputs)
+        # if hasattr(self, 'bn_relu'):
+        #     outputs = self.bn_relu(outputs)
         outputs = self.pool(outputs)
         outputs = self.flat(outputs)
         outputs = self.fully_connected_layer(outputs)
