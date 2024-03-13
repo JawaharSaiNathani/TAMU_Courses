@@ -135,13 +135,8 @@ class standard_block(nn.Module):
         ### YOUR CODE HERE
         self.bn_relu = batch_norm_relu_layer(num_features=filters)
         self.bn = nn.BatchNorm2d(num_features=filters, eps=1e-5, momentum=0.997)
-        # print('a-',first_num_filters, '|', filters, '|', projection_shortcut)
         self.layer1 = nn.Conv2d(first_num_filters, filters, (3, 3), strides, 1 if strides > 1 else 'same')
         self.layer2 = nn.Conv2d(filters, filters, (3,3), 1, 'same')
-        
-        ##Test
-        self.filters = filters
-        self.fnf = first_num_filters
         ### YOUR CODE HERE
         
         ### YOUR CODE HERE
@@ -185,8 +180,9 @@ class bottleneck_block(nn.Module):
                 nn.Conv2d(first_num_filters, filters, projection_shortcut, strides, 0)
             )
         ### YOUR CODE HERE
-        self.bn1 = batch_norm_relu_layer(num_features=first_num_filters)
+        self.bn1 = batch_norm_relu_layer(num_features=first_num_filters)    # num_filters = filters
         self.bn2 = batch_norm_relu_layer(num_features=filters//4)
+        self.bn3 = batch_norm_relu_layer(num_features=filters//4)
         self.layer1 = nn.Conv2d(first_num_filters, filters//4, (1,1), strides, 0 if strides > 1 else 'same')
         self.layer2 = nn.Conv2d(filters//4, filters//4, (3,3), 1, 'same')
         self.layer3 = nn.Conv2d(filters//4, filters, (1,1), 1, 'same')
@@ -200,7 +196,7 @@ class bottleneck_block(nn.Module):
         outputs = self.layer1(outputs)
         outputs = self.bn2(outputs)
         outputs = self.layer2(outputs)
-        outputs = self.bn2(outputs)
+        outputs = self.bn3(outputs)
         outputs = self.layer3(outputs)
         outputs = torch.add(projection, outputs)
         return outputs
@@ -225,7 +221,6 @@ class stack_layer(nn.Module):
         ### END CODE HERE
         # projection_shortcut = ?
         # Only the first block per stack_layer uses projection_shortcut and strides
-        # print('b-', first_num_filters, '|', filters)
         self.stack = nn.ModuleList()
         projection_shortcut = None
         if strides > 1 or block_fn is bottleneck_block:
@@ -272,8 +267,6 @@ class output_layer(nn.Module):
     def forward(self, inputs: Tensor) -> Tensor:
         ### END CODE HERE
         outputs = inputs
-        # if hasattr(self, 'bn_relu'):
-        #     outputs = self.bn_relu(outputs)
         outputs = self.pool(outputs)
         outputs = self.flat(outputs)
         outputs = self.fully_connected_layer(outputs)

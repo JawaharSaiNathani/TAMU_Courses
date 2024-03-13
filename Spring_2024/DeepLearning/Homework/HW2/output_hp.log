@@ -1,0 +1,384 @@
+Batch Size - 64 | Resnet Size - 10
+--- Preparing Data ---
+Using cuda device
+### Training... ###
+Epoch 1 Loss 1.208786 Duration 54.829 seconds.
+Epoch 2 Loss 1.032457 Duration 35.981 seconds.
+Epoch 3 Loss 0.854231 Duration 35.966 seconds.
+Epoch 4 Loss 0.553288 Duration 35.944 seconds.
+Epoch 5 Loss 0.669459 Duration 35.934 seconds.
+Epoch 6 Loss 0.645696 Duration 35.908 seconds.
+Epoch 7 Loss 0.579455 Duration 35.935 seconds.
+Epoch 8 Loss 0.533106 Duration 35.882 seconds.
+Epoch 9 Loss 0.477028 Duration 35.939 seconds.
+Epoch 10 Loss 0.439713 Duration 35.964 seconds.
+Checkpoint has been created.
+Epoch 11 Loss 0.311370 Duration 35.927 seconds.
+Epoch 12 Loss 0.439211 Duration 35.906 seconds.
+Epoch 13 Loss 0.497979 Duration 35.928 seconds.
+Epoch 14 Loss 0.521874 Duration 35.923 seconds.
+Epoch 15 Loss 0.360158 Duration 35.936 seconds.
+Epoch 16 Loss 0.360097 Duration 35.928 seconds.
+Epoch 17 Loss 0.392966 Duration 35.907 seconds.
+Epoch 18 Loss 0.319247 Duration 35.838 seconds.
+Epoch 19 Loss 0.241680 Duration 35.632 seconds.
+Epoch 20 Loss 0.147398 Duration 35.570 seconds.
+Checkpoint has been created.
+Epoch 21 Loss 0.216872 Duration 35.518 seconds.
+Epoch 22 Loss 0.140398 Duration 35.531 seconds.
+Epoch 23 Loss 0.295313 Duration 35.521 seconds.
+Epoch 24 Loss 0.233728 Duration 35.558 seconds.
+Epoch 25 Loss 0.146738 Duration 35.559 seconds.
+Epoch 26 Loss 0.204834 Duration 35.532 seconds.
+Epoch 27 Loss 0.135073 Duration 35.572 seconds.
+Epoch 28 Loss 0.115237 Duration 35.575 seconds.
+Epoch 29 Loss 0.144152 Duration 35.556 seconds.
+Epoch 30 Loss 0.097439 Duration 35.558 seconds.
+Checkpoint has been created.
+Epoch 31 Loss 0.188403 Duration 35.546 seconds.
+Epoch 32 Loss 0.225224 Duration 35.526 seconds.
+Epoch 33 Loss 0.184244 Duration 35.475 seconds.
+Epoch 34 Loss 0.192144 Duration 35.524 seconds.
+Epoch 35 Loss 0.099242 Duration 35.451 seconds.
+Epoch 36 Loss 0.065679 Duration 35.390 seconds.
+Epoch 37 Loss 0.125608 Duration 35.372 seconds.
+Epoch 38 Loss 0.230175 Duration 35.344 seconds.
+Epoch 39 Loss 0.085034 Duration 35.363 seconds.
+Epoch 40 Loss 0.230325 Duration 35.393 seconds.
+Checkpoint has been created.
+Epoch 41 Loss 0.082294 Duration 35.382 seconds.
+Epoch 42 Loss 0.072375 Duration 35.317 seconds.
+Epoch 43 Loss 0.099090 Duration 35.351 seconds.
+Epoch 44 Loss 0.039953 Duration 35.303 seconds.
+Epoch 45 Loss 0.055378 Duration 35.296 seconds.
+Epoch 46 Loss 0.090225 Duration 35.366 seconds.
+Epoch 47 Loss 0.072191 Duration 35.349 seconds.
+Epoch 48 Loss 0.030987 Duration 35.373 seconds.
+Epoch 49 Loss 0.041970 Duration 35.372 seconds.
+Epoch 50 Loss 0.127444 Duration 35.361 seconds.
+Checkpoint has been created.
+Epoch 51 Loss 0.062874 Duration 35.382 seconds.
+Epoch 52 Loss 0.176911 Duration 35.393 seconds.
+Epoch 53 Loss 0.060273 Duration 35.382 seconds.
+Epoch 54 Loss 0.123203 Duration 35.382 seconds.
+Epoch 55 Loss 0.101505 Duration 35.401 seconds.
+Epoch 56 Loss 0.095214 Duration 35.337 seconds.
+Epoch 57 Loss 0.067968 Duration 35.331 seconds.
+Epoch 58 Loss 0.179611 Duration 35.393 seconds.
+Epoch 59 Loss 0.135397 Duration 35.362 seconds.
+Epoch 60 Loss 0.119129 Duration 35.361 seconds.
+Checkpoint has been created.
+### Test or Validation ###
+Restored model parameters from model_l10_b64/model-60.ckpt
+Test accuracy: 0.8858
+### Test or Validation ###
+Restored model parameters from model_l10_b64/model-60.ckpt
+Test accuracy: 0.8767
+
+Batch Size - 256 | Resnet Size - 10
+--- Preparing Data ---
+Using cuda device
+### Training... ###
+Epoch 1 Loss 1.760922 Duration 22.336 seconds.
+Epoch 2 Loss 1.372797 Duration 22.191 seconds.
+Epoch 3 Loss 1.063986 Duration 22.183 seconds.
+Epoch 4 Loss 0.891918 Duration 22.195 seconds.
+Epoch 5 Loss 0.868505 Duration 22.259 seconds.
+Epoch 6 Loss 0.763647 Duration 22.194 seconds.
+Epoch 7 Loss 0.753117 Duration 22.193 seconds.
+Epoch 8 Loss 0.676800 Duration 22.197 seconds.
+Epoch 9 Loss 0.530149 Duration 22.256 seconds.
+Epoch 10 Loss 0.592644 Duration 22.196 seconds.
+Checkpoint has been created.
+Epoch 11 Loss 0.550090 Duration 22.196 seconds.
+Epoch 12 Loss 0.412120 Duration 22.197 seconds.
+Epoch 13 Loss 0.555162 Duration 22.197 seconds.
+Epoch 14 Loss 0.547563 Duration 22.259 seconds.
+Epoch 15 Loss 0.480721 Duration 22.195 seconds.
+Epoch 16 Loss 0.484391 Duration 22.200 seconds.
+Epoch 17 Loss 0.433056 Duration 22.198 seconds.
+Epoch 18 Loss 0.465673 Duration 22.262 seconds.
+Epoch 19 Loss 0.237395 Duration 22.195 seconds.
+Epoch 20 Loss 0.315982 Duration 22.199 seconds.
+Checkpoint has been created.
+Epoch 21 Loss 0.272788 Duration 22.196 seconds.
+Epoch 22 Loss 0.269761 Duration 22.261 seconds.
+Epoch 23 Loss 0.331481 Duration 22.199 seconds.
+Epoch 24 Loss 0.272223 Duration 22.199 seconds.
+Epoch 25 Loss 0.299867 Duration 22.196 seconds.
+Epoch 26 Loss 0.225200 Duration 22.198 seconds.
+Epoch 27 Loss 0.291185 Duration 22.259 seconds.
+Epoch 28 Loss 0.242935 Duration 22.197 seconds.
+Epoch 29 Loss 0.259469 Duration 22.197 seconds.
+Epoch 30 Loss 0.184650 Duration 22.200 seconds.
+Checkpoint has been created.
+Epoch 31 Loss 0.230923 Duration 22.257 seconds.
+Epoch 32 Loss 0.169532 Duration 22.196 seconds.
+Epoch 33 Loss 0.252081 Duration 22.197 seconds.
+Epoch 34 Loss 0.255200 Duration 22.198 seconds.
+Epoch 35 Loss 0.238611 Duration 22.197 seconds.
+Epoch 36 Loss 0.162434 Duration 22.259 seconds.
+Epoch 37 Loss 0.216799 Duration 22.195 seconds.
+Epoch 38 Loss 0.194093 Duration 22.197 seconds.
+Epoch 39 Loss 0.209939 Duration 22.197 seconds.
+Epoch 40 Loss 0.169296 Duration 22.262 seconds.
+Checkpoint has been created.
+Epoch 41 Loss 0.157300 Duration 22.197 seconds.
+Epoch 42 Loss 0.225643 Duration 22.197 seconds.
+Epoch 43 Loss 0.185161 Duration 22.198 seconds.
+Epoch 44 Loss 0.184630 Duration 22.261 seconds.
+Epoch 45 Loss 0.166987 Duration 22.198 seconds.
+Epoch 46 Loss 0.144667 Duration 22.198 seconds.
+Epoch 47 Loss 0.203300 Duration 22.195 seconds.
+Epoch 48 Loss 0.217959 Duration 22.196 seconds.
+Epoch 49 Loss 0.206953 Duration 22.259 seconds.
+Epoch 50 Loss 0.253499 Duration 22.198 seconds.
+Checkpoint has been created.
+Epoch 51 Loss 0.267546 Duration 22.196 seconds.
+Epoch 52 Loss 0.241453 Duration 22.199 seconds.
+Epoch 53 Loss 0.172925 Duration 22.260 seconds.
+Epoch 54 Loss 0.176293 Duration 22.201 seconds.
+Epoch 55 Loss 0.202253 Duration 22.196 seconds.
+Epoch 56 Loss 0.215514 Duration 22.200 seconds.
+Epoch 57 Loss 0.229036 Duration 22.196 seconds.
+Epoch 58 Loss 0.180887 Duration 22.262 seconds.
+Epoch 59 Loss 0.176070 Duration 22.196 seconds.
+Epoch 60 Loss 0.131614 Duration 22.200 seconds.
+Checkpoint has been created.
+### Test or Validation ###
+Restored model parameters from model_l10_b256/model-60.ckpt
+Test accuracy: 0.8496
+### Test or Validation ###
+Restored model parameters from model_l10_b256/model-60.ckpt
+Test accuracy: 0.8403
+
+Batch Size - 64 | Resnet Size - 28
+--- Preparing Data ---
+Using cuda device
+### Training... ###
+Epoch 1 Loss 1.573371 Duration 89.024 seconds.
+Epoch 2 Loss 1.110086 Duration 79.091 seconds.
+Epoch 3 Loss 1.047867 Duration 79.062 seconds.
+Epoch 4 Loss 0.926123 Duration 79.024 seconds.
+Epoch 5 Loss 1.006865 Duration 78.914 seconds.
+Epoch 6 Loss 0.735118 Duration 80.694 seconds.
+Epoch 7 Loss 0.311685 Duration 78.769 seconds.
+Epoch 8 Loss 0.484695 Duration 78.231 seconds.
+Epoch 9 Loss 0.428432 Duration 78.269 seconds.
+Epoch 10 Loss 0.560573 Duration 78.265 seconds.
+Checkpoint has been created.
+Epoch 11 Loss 0.310712 Duration 78.330 seconds.
+Epoch 12 Loss 0.441602 Duration 78.325 seconds.
+Epoch 13 Loss 0.371108 Duration 78.390 seconds.
+Epoch 14 Loss 0.808638 Duration 78.327 seconds.
+Epoch 15 Loss 0.379862 Duration 78.306 seconds.
+Epoch 16 Loss 0.602018 Duration 78.313 seconds.
+Epoch 17 Loss 0.272354 Duration 78.360 seconds.
+Epoch 18 Loss 0.444779 Duration 78.308 seconds.
+Epoch 19 Loss 0.306642 Duration 78.302 seconds.
+Epoch 20 Loss 0.073863 Duration 78.300 seconds.
+Checkpoint has been created.
+Epoch 21 Loss 0.163945 Duration 78.225 seconds.
+Epoch 22 Loss 0.098066 Duration 78.282 seconds.
+Epoch 23 Loss 0.256900 Duration 78.278 seconds.
+Epoch 24 Loss 0.193113 Duration 78.227 seconds.
+Epoch 25 Loss 0.129086 Duration 78.282 seconds.
+Epoch 26 Loss 0.099763 Duration 78.285 seconds.
+Epoch 27 Loss 0.180879 Duration 78.213 seconds.
+Epoch 28 Loss 0.082693 Duration 78.281 seconds.
+Epoch 29 Loss 0.126222 Duration 78.236 seconds.
+Epoch 30 Loss 0.148767 Duration 78.284 seconds.
+Checkpoint has been created.
+Epoch 31 Loss 0.157613 Duration 78.265 seconds.
+Epoch 32 Loss 0.097669 Duration 78.286 seconds.
+Epoch 33 Loss 0.145012 Duration 78.218 seconds.
+Epoch 34 Loss 0.074016 Duration 78.274 seconds.
+Epoch 35 Loss 0.080208 Duration 78.281 seconds.
+Epoch 36 Loss 0.091121 Duration 78.217 seconds.
+Epoch 37 Loss 0.120368 Duration 78.280 seconds.
+Epoch 38 Loss 0.051103 Duration 78.406 seconds.
+Epoch 39 Loss 0.068680 Duration 78.293 seconds.
+Epoch 40 Loss 0.047174 Duration 78.286 seconds.
+Checkpoint has been created.
+Epoch 41 Loss 0.011497 Duration 78.308 seconds.
+Epoch 42 Loss 0.064299 Duration 78.243 seconds.
+Epoch 43 Loss 0.079415 Duration 78.287 seconds.
+Epoch 44 Loss 0.127257 Duration 78.287 seconds.
+Epoch 45 Loss 0.022761 Duration 78.242 seconds.
+Epoch 46 Loss 0.011948 Duration 78.305 seconds.
+Epoch 47 Loss 0.053262 Duration 78.242 seconds.
+Epoch 48 Loss 0.119030 Duration 78.293 seconds.
+Epoch 49 Loss 0.071369 Duration 78.299 seconds.
+Epoch 50 Loss 0.076989 Duration 78.273 seconds.
+Checkpoint has been created.
+Epoch 51 Loss 0.018325 Duration 84.468 seconds.
+Epoch 52 Loss 0.029115 Duration 78.455 seconds.
+Epoch 53 Loss 0.050966 Duration 78.359 seconds.
+Epoch 54 Loss 0.010688 Duration 78.424 seconds.
+Epoch 55 Loss 0.065433 Duration 78.355 seconds.
+Epoch 56 Loss 0.015947 Duration 80.003 seconds.
+Epoch 57 Loss 0.022737 Duration 78.235 seconds.
+Epoch 58 Loss 0.070528 Duration 78.298 seconds.
+Epoch 59 Loss 0.032589 Duration 78.234 seconds.
+Epoch 60 Loss 0.047387 Duration 79.634 seconds.
+Checkpoint has been created.
+### Test or Validation ###
+Restored model parameters from model_l28_b64/model-60.ckpt
+Test accuracy: 0.8936
+### Test or Validation ###
+Restored model parameters from model_l28_b64/model-60.ckpt
+Test accuracy: 0.8833
+
+Batch Size - 128 | Resnet Size - 28
+--- Preparing Data ---
+Using cuda device
+### Training... ###
+Epoch 1 Loss 1.628735 Duration 66.089 seconds.
+Epoch 2 Loss 1.244052 Duration 61.622 seconds.
+Epoch 3 Loss 1.177095 Duration 61.638 seconds.
+Epoch 4 Loss 0.985686 Duration 61.642 seconds.
+Epoch 5 Loss 0.825938 Duration 61.639 seconds.
+Epoch 6 Loss 1.039812 Duration 61.643 seconds.
+Epoch 7 Loss 0.658864 Duration 61.645 seconds.
+Epoch 8 Loss 0.705644 Duration 61.667 seconds.
+Epoch 9 Loss 0.568147 Duration 61.649 seconds.
+Epoch 10 Loss 0.446447 Duration 61.637 seconds.
+Checkpoint has been created.
+Epoch 11 Loss 0.508118 Duration 61.646 seconds.
+Epoch 12 Loss 0.438127 Duration 61.649 seconds.
+Epoch 13 Loss 0.516104 Duration 61.634 seconds.
+Epoch 14 Loss 0.408258 Duration 61.681 seconds.
+Epoch 15 Loss 0.370010 Duration 61.614 seconds.
+Epoch 16 Loss 0.443218 Duration 61.669 seconds.
+Epoch 17 Loss 0.443341 Duration 61.648 seconds.
+Epoch 18 Loss 0.228376 Duration 61.635 seconds.
+Epoch 19 Loss 0.514442 Duration 61.647 seconds.
+Epoch 20 Loss 0.139665 Duration 61.647 seconds.
+Checkpoint has been created.
+Epoch 21 Loss 0.178342 Duration 61.669 seconds.
+Epoch 22 Loss 0.235505 Duration 61.614 seconds.
+Epoch 23 Loss 0.111895 Duration 61.666 seconds.
+Epoch 24 Loss 0.117264 Duration 61.649 seconds.
+Epoch 25 Loss 0.170148 Duration 61.648 seconds.
+Epoch 26 Loss 0.142239 Duration 61.645 seconds.
+Epoch 27 Loss 0.202898 Duration 61.639 seconds.
+Epoch 28 Loss 0.117767 Duration 61.813 seconds.
+Epoch 29 Loss 0.124276 Duration 61.637 seconds.
+Epoch 30 Loss 0.123836 Duration 61.679 seconds.
+Checkpoint has been created.
+Epoch 31 Loss 0.168813 Duration 61.639 seconds.
+Epoch 32 Loss 0.245292 Duration 61.644 seconds.
+Epoch 33 Loss 0.060036 Duration 61.649 seconds.
+Epoch 34 Loss 0.115307 Duration 61.634 seconds.
+Epoch 35 Loss 0.159430 Duration 61.648 seconds.
+Epoch 36 Loss 0.080193 Duration 61.643 seconds.
+Epoch 37 Loss 0.100289 Duration 61.674 seconds.
+Epoch 38 Loss 0.070499 Duration 61.615 seconds.
+Epoch 39 Loss 0.165527 Duration 61.668 seconds.
+Epoch 40 Loss 0.169155 Duration 61.649 seconds.
+Checkpoint has been created.
+Epoch 41 Loss 0.040967 Duration 61.650 seconds.
+Epoch 42 Loss 0.076718 Duration 61.640 seconds.
+Epoch 43 Loss 0.079000 Duration 62.337 seconds.
+Epoch 44 Loss 0.110186 Duration 67.521 seconds.
+Epoch 45 Loss 0.086996 Duration 61.981 seconds.
+Epoch 46 Loss 0.139990 Duration 61.674 seconds.
+Epoch 47 Loss 0.061047 Duration 61.610 seconds.
+Epoch 48 Loss 0.057195 Duration 61.664 seconds.
+Epoch 49 Loss 0.035356 Duration 61.640 seconds.
+Epoch 50 Loss 0.167151 Duration 62.522 seconds.
+Checkpoint has been created.
+Epoch 51 Loss 0.135980 Duration 61.640 seconds.
+Epoch 52 Loss 0.102830 Duration 61.635 seconds.
+Epoch 53 Loss 0.107210 Duration 61.665 seconds.
+Epoch 54 Loss 0.123477 Duration 61.604 seconds.
+Epoch 55 Loss 0.084587 Duration 61.656 seconds.
+Epoch 56 Loss 0.067557 Duration 61.638 seconds.
+Epoch 57 Loss 0.087373 Duration 61.640 seconds.
+Epoch 58 Loss 0.134218 Duration 61.627 seconds.
+Epoch 59 Loss 0.064718 Duration 61.635 seconds.
+Epoch 60 Loss 0.094752 Duration 61.639 seconds.
+Checkpoint has been created.
+### Test or Validation ###
+Restored model parameters from model_l28_b128/model-60.ckpt
+Test accuracy: 0.8612
+### Test or Validation ###
+Restored model parameters from model_l28_b128/model-60.ckpt
+Test accuracy: 0.8585
+
+Batch Size - 256 | Resnet Size - 28
+--- Preparing Data ---
+Using cuda device
+### Training... ###
+Epoch 1 Loss 1.830246 Duration 60.441 seconds.
+Epoch 2 Loss 1.483262 Duration 59.192 seconds.
+Epoch 3 Loss 1.446210 Duration 59.219 seconds.
+Epoch 4 Loss 1.297028 Duration 59.226 seconds.
+Epoch 5 Loss 1.171250 Duration 59.229 seconds.
+Epoch 6 Loss 0.897794 Duration 59.228 seconds.
+Epoch 7 Loss 0.942474 Duration 59.227 seconds.
+Epoch 8 Loss 0.834975 Duration 59.228 seconds.
+Epoch 9 Loss 0.708677 Duration 59.227 seconds.
+Epoch 10 Loss 0.756977 Duration 59.226 seconds.
+Checkpoint has been created.
+Epoch 11 Loss 0.641597 Duration 59.225 seconds.
+Epoch 12 Loss 0.539262 Duration 59.226 seconds.
+Epoch 13 Loss 0.636872 Duration 59.231 seconds.
+Epoch 14 Loss 0.644186 Duration 59.227 seconds.
+Epoch 15 Loss 0.688146 Duration 59.229 seconds.
+Epoch 16 Loss 0.471231 Duration 59.227 seconds.
+Epoch 17 Loss 0.561701 Duration 59.227 seconds.
+Epoch 18 Loss 0.448461 Duration 59.227 seconds.
+Epoch 19 Loss 0.437912 Duration 59.225 seconds.
+Epoch 20 Loss 0.316793 Duration 59.226 seconds.
+Checkpoint has been created.
+Epoch 21 Loss 0.272090 Duration 59.225 seconds.
+Epoch 22 Loss 0.353589 Duration 59.228 seconds.
+Epoch 23 Loss 0.276954 Duration 59.227 seconds.
+Epoch 24 Loss 0.250326 Duration 59.229 seconds.
+Epoch 25 Loss 0.295072 Duration 59.226 seconds.
+Epoch 26 Loss 0.252740 Duration 59.382 seconds.
+Epoch 27 Loss 0.236065 Duration 59.226 seconds.
+Epoch 28 Loss 0.273830 Duration 59.226 seconds.
+Epoch 29 Loss 0.264418 Duration 59.296 seconds.
+Epoch 30 Loss 0.292017 Duration 59.227 seconds.
+Checkpoint has been created.
+Epoch 31 Loss 0.253730 Duration 59.231 seconds.
+Epoch 32 Loss 0.239021 Duration 59.228 seconds.
+Epoch 33 Loss 0.243373 Duration 59.231 seconds.
+Epoch 34 Loss 0.231200 Duration 59.230 seconds.
+Epoch 35 Loss 0.238468 Duration 59.229 seconds.
+Epoch 36 Loss 0.184563 Duration 59.226 seconds.
+Epoch 37 Loss 0.253434 Duration 59.232 seconds.
+Epoch 38 Loss 0.232419 Duration 59.228 seconds.
+Epoch 39 Loss 0.341996 Duration 59.224 seconds.
+Epoch 40 Loss 0.247494 Duration 60.409 seconds.
+Checkpoint has been created.
+Epoch 41 Loss 0.175837 Duration 64.404 seconds.
+Epoch 42 Loss 0.135842 Duration 59.319 seconds.
+Epoch 43 Loss 0.190384 Duration 59.225 seconds.
+Epoch 44 Loss 0.174675 Duration 59.223 seconds.
+Epoch 45 Loss 0.167140 Duration 59.222 seconds.
+Epoch 46 Loss 0.184517 Duration 59.224 seconds.
+Epoch 47 Loss 0.186986 Duration 61.018 seconds.
+Epoch 48 Loss 0.106116 Duration 59.224 seconds.
+Epoch 49 Loss 0.174972 Duration 59.223 seconds.
+Epoch 50 Loss 0.167003 Duration 59.223 seconds.
+Checkpoint has been created.
+Epoch 51 Loss 0.186019 Duration 59.224 seconds.
+Epoch 52 Loss 0.136225 Duration 59.226 seconds.
+Epoch 53 Loss 0.195489 Duration 59.225 seconds.
+Epoch 54 Loss 0.138925 Duration 59.225 seconds.
+Epoch 55 Loss 0.214585 Duration 59.226 seconds.
+Epoch 56 Loss 0.153907 Duration 59.226 seconds.
+Epoch 57 Loss 0.184682 Duration 59.228 seconds.
+Epoch 58 Loss 0.165117 Duration 59.225 seconds.
+Epoch 59 Loss 0.155783 Duration 59.225 seconds.
+Epoch 60 Loss 0.152173 Duration 59.224 seconds.
+Checkpoint has been created.
+### Test or Validation ###
+Restored model parameters from model_l28_b256/model-60.ckpt
+Test accuracy: 0.8296
+### Test or Validation ###
+Restored model parameters from model_l28_b256/model-60.ckpt
+Test accuracy: 0.8267

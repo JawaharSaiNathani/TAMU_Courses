@@ -27,7 +27,7 @@ class Cifar(nn.Module):
 
         ### YOUR CODE HERE
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"Using {self.device} device")
+        print(f"Device - {self.device}")
         self.network.to(self.device)
 
         # define cross entropy loss and optimizer
@@ -61,12 +61,18 @@ class Cifar(nn.Module):
                 # Construct the current batch.
                 # Don't forget to use "parse_record" to perform data preprocessing.
                 # Don't forget L2 weight decay
-                X_batch = curr_x_train[i*self.config.batch_size:min((i+1)*self.config.batch_size,curr_x_train.shape[0])]
-                y_batch = curr_y_train[i*self.config.batch_size:min((i+1)*self.config.batch_size,curr_y_train.shape[0])]
-                X_batch = np.array(list(map(lambda x: parse_record(x,True),X_batch)))
-                X_batch = torch.tensor(X_batch,device=self.device, dtype=torch.float)
+                batch_size = self.config.batch_size
+                min_idx = i*batch_size
+                max_idx = min((i+1)*batch_size, curr_x_train.shape[0])
+
+                X_batch = curr_x_train[min_idx : max_idx]
+                X_batch = np.array(list(map(lambda l: parse_record(l,True), X_batch)))
+                X_batch = torch.tensor(X_batch, torch.float, self.device)
                 pred = self.network.forward(X_batch)
-                y_batch = torch.tensor(y_batch,device=self.device)
+
+                y_batch = curr_y_train[min_idx : max_idx]
+                y_batch = torch.tensor(y_batch, torch.int, self.device)
+
                 loss = self.loss_fn(pred,y_batch)
                 
                 ### YOUR CODE HERE
@@ -94,9 +100,11 @@ class Cifar(nn.Module):
             with torch.no_grad():
                 for i in tqdm(range(x.shape[0])):
                     ### YOUR CODE HERE
-                    x_processed = np.array(list(map(lambda x: parse_record(x,False),x[i:i+1])))
-                    x_processed = torch.tensor(x_processed,device=self.device,dtype=torch.float)
-                    preds.append(torch.argmax(self.network.forward(x_processed),axis=1))
+                    x_b = x[i:i+1]
+                    x_b = np.array(list(map(lambda l: parse_record(l,False), x_b)))
+                    x_b = torch.tensor(x_b, torch.float, self.device)
+                    pred = self.network.forward(x_b)
+                    preds.append(torch.argmax(pred, axis=1))
                 ### END CODE HERE
 
             y = torch.tensor(y)

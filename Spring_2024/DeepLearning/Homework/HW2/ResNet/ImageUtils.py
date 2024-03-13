@@ -38,16 +38,34 @@ def preprocess_image(image, training):
     """
     if training:
         # Resize the image to add four extra pixels on each side.
-        image = np.pad(image, ((4, 4), (4, 4), (0, 0)), mode='constant')
+        height, width, channels = image.shape
+        extra_pixels = 2
+        
+        # -me Calculate new dimensions with extra pixels
+        pad_width = width + 2 * extra_pixels
+        pad_height = height + 2 * extra_pixels
+        
+        # -me Create a new blank image with the new dimensions
+        pad_image = np.zeros((pad_height, pad_width, channels), dtype=image.dtype)
+        
+        # -me Paste the original image onto the new image with extra pixels border
+        pad_image[extra_pixels:pad_height-extra_pixels, extra_pixels:pad_width-extra_pixels, :] = image
 
         # Randomly crop a [32, 32] section of the image.
         # HINT: randomly generate the upper left point of the image
-        x_top = np.random.randint(0, 9)
-        y_top = np.random.randint(0, 9)
-        image = image[x_top:x_top+32, y_top:y_top+32, :]
+        crop_size = [32, 32]        
+        max_y = pad_height - crop_size[0]
+        max_x = pad_width - crop_size[1]
+        start_y = np.random.randint(0, max_y + 1)
+        start_x = np.random.randint(0, max_x + 1)
+        
+        # -me Crop the image
+        image = pad_image[start_y:start_y + crop_size[0], start_x:start_x + crop_size[1]]
 
         # Randomly flip the image horizontally.
         flip = np.random.rand() < 0.5
+    
+        # -me If flip is True, horizontally flip the image
         if flip:
             image = np.fliplr(image)
 
