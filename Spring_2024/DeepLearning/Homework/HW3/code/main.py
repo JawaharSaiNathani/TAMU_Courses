@@ -19,7 +19,7 @@ def set_seed(seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--task', type=str, default="train",
+    parser.add_argument('--task', type=str,
                         help='name of this task: train/generate', required=True)
     parser.add_argument('--run_name', type=str,
                         help="name for an experiment run", required=False)

@@ -25,7 +25,7 @@ def generate_sample(model, tokenizer, conditions, max_length):
             # Generate one token at a time, and append it to the input to do generation iteratively until </s> is generated
             ### YOUR CODE HERE ###
             outputs = model(input_ids)
-            next_token_logits = outputs.logits[:, -1, :]
+            next_token_logits = outputs[0][:, -1, :]
 
             # Greedily select the next token
             next_token = torch.argmax(next_token_logits, dim=-1)
