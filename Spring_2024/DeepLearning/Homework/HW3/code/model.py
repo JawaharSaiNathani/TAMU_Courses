@@ -26,7 +26,7 @@ class CSABlock(nn.Module):
         # self.key = nn.Linear(config.n_embd, config.n_embd)
         # self.query = nn.Linear(config.n_embd, config.n_embd)
         # self.value = nn.Linear(config.n_embd, config.n_embd)
-        self.Wqhk = nn.Linear(config.n_embd, config.n_embd * 3)
+        self.Wqkv = nn.Linear(config.n_embd, config.n_embd * 3)
 
         ### YOUR CODE HERE ###
         self.attn_drop = nn.Dropout(config.attn_pdrop)
