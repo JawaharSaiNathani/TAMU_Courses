@@ -49,7 +49,7 @@ class CSABlock(nn.Module):
         # queries = self.query(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2) 
         # keys = self.key(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
         # values = self.value(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
-        x = self.Wqkv(x).reshape(B, L, 3, self.nh, C//self.nh)
+        x = self.Wqkv(x).reshape(B, L, 3, self.n_head, C//self.n_head)
         q, k, v = x.transpose(3, 1).unbind(dim=2)
         ### YOUR CODE HERE ###
 
