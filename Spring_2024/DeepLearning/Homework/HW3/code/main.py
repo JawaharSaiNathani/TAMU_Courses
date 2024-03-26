@@ -27,7 +27,7 @@ if __name__ == '__main__':
                         help="data split of SCAN dataset", required=False)
     parser.add_argument('--n_layer', type=int, default=100,
                         help="number of layers", required=False)
-    parser.add_argument('--n_head', type=int, default=3,
+    parser.add_argument('--n_head', type=int, default=4,
                         help="number of heads", required=False)
     parser.add_argument('--n_embd', type=int, default=16,
                         help="embedding dimension", required=False)
