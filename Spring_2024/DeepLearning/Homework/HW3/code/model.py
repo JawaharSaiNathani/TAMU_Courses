@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+import math
 
 
 class GPTConfig:
@@ -22,9 +23,10 @@ class CSABlock(nn.Module):
         assert config.n_embd % config.n_head == 0
         # K, Q, V projections for multiple heads
         ### YOUR CODE HERE ###
-        self.key = nn.Linear(config.n_embd, config.n_embd)
-        self.query = nn.Linear(config.n_embd, config.n_embd)
-        self.value = nn.Linear(config.n_embd, config.n_embd)
+        # self.key = nn.Linear(config.n_embd, config.n_embd)
+        # self.query = nn.Linear(config.n_embd, config.n_embd)
+        # self.value = nn.Linear(config.n_embd, config.n_embd)
+        self.Wqhk = nn.Linear(config.n_embd, config.n_embd * 3)
 
         ### YOUR CODE HERE ###
         self.attn_drop = nn.Dropout(config.attn_pdrop)
@@ -32,8 +34,9 @@ class CSABlock(nn.Module):
         self.proj = nn.Linear(config.n_embd, config.n_embd)
         # mask for causal attention
         ### YOUR CODE HERE ###
-        self.register_buffer("mask", torch.tril(torch.ones(config.max_len, config.max_len))
-                                        .view(1, 1, config.max_len, config.max_len))
+        # self.register_buffer("mask", torch.tril(torch.ones(config.block_size, config.block_size))
+        #                                 .view(1, 1, config.block_size, config.block_size))
+        self.mask = torch.triu(torch.ones(config.block_size, config.block_size), diagonal=1)
         ### YOUR CODE HERE ###
 
         self.n_head = config.n_head
@@ -43,29 +46,39 @@ class CSABlock(nn.Module):
 
         # Q, K, V for all heads
         ### YOUR CODE HERE ###
-        queries = self.query(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2) 
-        keys = self.key(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
-        values = self.value(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
+        # queries = self.query(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2) 
+        # keys = self.key(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
+        # values = self.value(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
+        x = self.Wqkv(x).reshape(B, L, 3, self.nh, C//self.nh)
+        q, k, v = x.transpose(3, 1).unbind(dim=2)
         ### YOUR CODE HERE ###
 
         # Causal self-attention
         # attention dropout
         ### YOUR CODE HERE ###
-        attn_weights = torch.matmul(queries, keys.transpose(-2, -1)) / (C // self.n_head) ** 0.5
-        attn_weights = attn_weights.masked_fill(self.mask[:, :, :L, :L] == 0, float('-inf'))  # Apply causal mask
-        attn_weights = nn.functional.softmax(attn_weights, dim=-1)
-        attn_weights = self.attn_drop(attn_weights)
+        # attn_weights = torch.matmul(queries, keys.transpose(-2, -1)) / (C // self.n_head) ** 0.5
+        # attn_weights = attn_weights.masked_fill(self.mask[:, :, :L, :L] == 0, float('-inf'))  # Apply causal mask
+        # attn_weights = nn.functional.softmax(attn_weights, dim=-1)
+        # attn_weights = self.attn_drop(attn_weights)
+        attn = q @ k.transpose(-2, -1)
+        attn = attn / math.sqrt(k.size(-1))
+        print(attn)
+        attn = attn.masked_fill(self.mask.bool(), -torch.inf)
+        print(attn)
+
+        attn = attn.softmax(dim=-1)
+        attn = self.attn_drop(attn)
         ### YOUR CODE HERE ###
 
         # Apply the attention to the values; Combine all head outputs
         ### YOUR CODE HERE ###
-        y = torch.matmul(attn_weights, values)
-        y = y.transpose(1, 2).contiguous().view(B, L, C)
+        y = attn @ v
+        # y = y.transpose(1, 2).contiguous().view(B, L, C)
         ### YOUR CODE HERE ###
 
         # Readout projection
         y = self.resid_drop(self.proj(y))
-        return y, attn_weights # attn_save is the attention mask without dropout
+        return y, attn # attn_save is the attention mask without dropout
 
 class Block(nn.Module):
 
