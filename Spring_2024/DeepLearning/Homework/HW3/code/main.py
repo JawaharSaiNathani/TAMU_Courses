@@ -25,20 +25,20 @@ if __name__ == '__main__':
                         help="name for an experiment run", required=False)
     parser.add_argument('--data_split', type=str, default='simple',
                         help="data split of SCAN dataset", required=False)
-    parser.add_argument('--n_layer', type=int, default=2,
+    parser.add_argument('--n_layer', type=int, default=100,
                         help="number of layers", required=False)
-    parser.add_argument('--n_head', type=int, default=2,
+    parser.add_argument('--n_head', type=int, default=3,
                         help="number of heads", required=False)
     parser.add_argument('--n_embd', type=int, default=16,
                         help="embedding dimension", required=False)
-    parser.add_argument('--max_epochs', type=int, default=60,
+    parser.add_argument('--max_epochs', type=int, default=100,
                         help="total epochs", required=False)
     parser.add_argument('--batch_size', type=int, default=32,
                         help="batch size", required=False)
     parser.add_argument('--num_workers', type=int, default=8,
                         help="number of workers for data loaders", required=False)
     parser.add_argument('--learning_rate', type=float,
-                        default=4e-4, help="learning rate", required=False)
+                        default=0.01, help="learning rate", required=False)
     parser.add_argument('--max_len', type=int, default=128,
                         help="max_len", required=False)
     parser.add_argument('--seed', type=int, default=44,

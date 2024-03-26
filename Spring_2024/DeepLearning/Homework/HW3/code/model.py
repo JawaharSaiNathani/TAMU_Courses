@@ -23,10 +23,10 @@ class CSABlock(nn.Module):
         assert config.n_embd % config.n_head == 0
         # K, Q, V projections for multiple heads
         ### YOUR CODE HERE ###
-        self.Wqkv = nn.Linear(config.n_embd, config.n_embd)
+        # self.key = nn.Linear(config.n_embd, config.n_embd)
         # self.query = nn.Linear(config.n_embd, config.n_embd)
         # self.value = nn.Linear(config.n_embd, config.n_embd)
-        # self.Wqkv = nn.Linear(config.n_embd, config.n_embd * 3)
+        self.Wqkv = nn.Linear(config.n_embd, config.n_embd * 3)
 
         ### YOUR CODE HERE ###
         self.attn_drop = nn.Dropout(config.attn_pdrop)
@@ -46,9 +46,11 @@ class CSABlock(nn.Module):
 
         # Q, K, V for all heads
         ### YOUR CODE HERE ###
-        q = k = v = self.Wqkv(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
-        # x = self.Wqkv(x).reshape(B, L, 3, self.n_head, C//self.n_head)
-        # q, k, v = x.transpose(3, 1).unbind(dim=2)
+        # queries = self.query(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2) 
+        # keys = self.key(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
+        # values = self.value(x).view(B, L, self.n_head, C // self.n_head).transpose(1, 2)
+        x = self.Wqkv(x).reshape(B, L, 3, self.n_head, C//self.n_head)
+        q, k, v = x.transpose(3, 1).unbind(dim=2)
         ### YOUR CODE HERE ###
 
         # Causal self-attention
